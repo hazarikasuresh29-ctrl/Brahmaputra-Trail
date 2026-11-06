@@ -1,6 +1,33 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://hazarikasuresh29-ctrl.github.io/Brahmaputra-Trail/</loc>
   </url>
+
+  <url>
+    <loc>https://hazarikasuresh29-ctrl.github.io/Brahmaputra-Trail/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hazarikasuresh29-ctrl.github.io/Brahmaputra-Trail/contact.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hazarikasuresh29-ctrl.github.io/Brahmaputra-Trail/gallery.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hazarikasuresh29-ctrl.github.io/Brahmaputra-Trail/kamakhya.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hazarikasuresh29-ctrl.github.io/Brahmaputra-Trail/taxi.html</loc>
+  </url>
+
+  <url>
+    <loc>https://hazarikasuresh29-ctrl.github.io/Brahmaputra-Trail/tours.html</loc>
+  </url>
+
 </urlset>
