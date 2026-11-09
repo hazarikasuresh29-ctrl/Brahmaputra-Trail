@@ -1,1 +1,247 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gallery | Brahmaputra Trail</title><link rel="stylesheet" href="style.css"></head><body><header><div class="nav"><a class="brand" href="index.html">BRAHMAPUTRA TRAIL<small>TOURS · TAXI · PILGRIMAGE</small></a><nav><a href="index.html">Home</a><a href="tours.html">Tours</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a></nav></div></header><section class="pagehero"><h1>Travel Gallery</h1><p>A glimpse of the landscapes that make the North East special.</p></section><main class="wrap"><div class="grid"><article class="card"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85"><div class="pad">Mountain landscapes</div></article><article class="card"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85"><div class="pad">Green valleys</div></article><article class="card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85"><div class="pad">Nature escapes</div></article></div><p class="center">These are illustrative travel photographs. Replace with your own trip photos when available.</p></main><footer>© Brahmaputra Trail</footer></body></html>
+HTML
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Travel Gallery | Brahmaputra Trail</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+.gallery-tools{max-width:1100px;margin:25px auto;padding:18px;background:#fff;border-radius:12px}
+.gallery-tools button,.gallery-tools label{display:inline-block;padding:11px 18px;margin:5px;border:0;border-radius:7px;background:#176b50;color:white;font-weight:600;cursor:pointer}
+.gallery-tools button.secondary{background:#34495e}
+.gallery-tools input{max-width:100%;margin:10px 0}
+.gallery-status{padding:10px;color:#315b4a}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.gallery-item{background:white;border-radius:12px;overflow:hidden;box-shadow:0 3px 14px #0001}
+.gallery-item img,.gallery-item video{width:100%;height:220px;object-fit:cover;display:block}
+.gallery-item p{padding:10px;margin:0}
+.gallery-item button{margin:0 10px 12px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<a class="brand" href="index.html">BRAHMAPUTRA TRAIL
+<small>TOURS · TAXI · PILGRIMAGE</small></a>
+<nav>
+<a href="index.html">Home</a>
+<a href="tours.html">Tours</a>
+<a href="gallery.html">Gallery</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
+</header>
+
+<section class="pagehero">
+<h1>Travel Gallery</h1>
+<p>Explore the beautiful landscapes and memorable journeys of North East India.</p>
+</section>
+
+<main class="wrap">
+<section class="gallery-tools">
+<h2>Brahmaputra Trail Gallery</h2>
+<p>Discover our travel photos and videos.</p>
+
+<button id="loginBtn">Sign in with Google</button>
+<button id="logoutBtn" class="secondary" hidden>Sign out</button>
+<p id="accountInfo" class="gallery-status">Checking login status...</p>
+
+<div id="adminPanel" hidden>
+<h3>Upload travel photos or videos</h3>
+<input id="mediaFiles" type="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm" multiple>
+<br>
+<button id="uploadBtn">Upload selected files</button>
+<p class="gallery-status">Owner upload access will activate after account verification.</p>
+</div>
+
+<p id="status" class="gallery-status" aria-live="polite">Loading gallery...</p>
+</section>
+
+<section id="galleryGrid" class="gallery-grid"></section>
+</main>
+
+<footer>© Brahmaputra Trail</footer>
+
+<script>
+const SUPABASE_URL = "https://ogsouhyhxqjuuhdncxpg.supabase.co";
+const SUPABASE_KEY = "sb_publishable_MhqFVYEEWNtWB7njVqDFyg_-abJFJQN";
+const BUCKET = "Gallery";
+
+/* Owner UID will be added only after your Google login is verified. */
+const OWNER_UID = "";
+
+const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const accountInfo = document.getElementById("accountInfo");
+const adminPanel = document.getElementById("adminPanel");
+const statusBox = document.getElementById("status");
+const galleryGrid = document.getElementById("galleryGrid");
+const mediaFiles = document.getElementById("mediaFiles");
+const uploadBtn = document.getElementById("uploadBtn");
+
+let currentUser = null;
+
+function isOwner() {
+  return !!currentUser && !!OWNER_UID && currentUser.id === OWNER_UID;
+}
+
+loginBtn.addEventListener("click", async () => {
+  statusBox.textContent = "Opening Google login...";
+  const { error } = await client.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: window.location.origin + window.location.pathname
+    }
+  });
+  if (error) statusBox.textContent = error.message;
+});
+
+logoutBtn.addEventListener("click", async () => {
+  const { error } = await client.auth.signOut();
+  if (error) statusBox.textContent = error.message;
+});
+
+async function refreshAccount() {
+  const { data, error } = await client.auth.getUser();
+  if (error) {
+    accountInfo.textContent = "Not signed in.";
+    currentUser = null;
+  } else {
+    currentUser = data.user;
+    accountInfo.textContent = currentUser
+      ? "Signed in: " + (currentUser.email || "Google account")
+      : "Not signed in.";
+  }
+
+  loginBtn.hidden = !!currentUser;
+  logoutBtn.hidden = !currentUser;
+  adminPanel.hidden = !isOwner();
+
+  if (currentUser && !OWNER_UID) {
+    accountInfo.textContent += " — Owner access is not activated yet.";
+  }
+}
+
+function safeText(value) {
+  const p = document.createElement("p");
+  p.textContent = value;
+  return p.textContent;
+}
+
+async function loadGallery() {
+  statusBox.textContent = "Loading gallery...";
+  galleryGrid.replaceChildren();
+
+  const { data, error } = await client.storage.from(BUCKET).list("", {
+    limit: 100,
+    sortBy: { column: "created_at", order: "desc" }
+  });
+
+  if (error) {
+    statusBox.textContent = "Gallery could not load. Storage read policy may need setup.";
+    return;
+  }
+
+  const files = (data || []).filter(file => file.name && !file.name.startsWith("."));
+
+  if (!files.length) {
+    statusBox.textContent = "No travel photos or videos uploaded yet.";
+    return;
+  }
+
+  for (const file of files) {
+    const path = file.name;
+    const { data: publicData } = client.storage.from(BUCKET).getPublicUrl(path);
+    const url = publicData.publicUrl;
+    const isVideo = /\.(mp4|webm)$/i.test(path);
+
+    const card = document.createElement("article");
+    card.className = "gallery-item";
+
+    const media = document.createElement(isVideo ? "video" : "img");
+    media.src = url;
+    if (isVideo) {
+      media.controls = true;
+      media.preload = "metadata";
+    } else {
+      media.alt = "Brahmaputra Trail travel photograph";
+      media.loading = "lazy";
+    }
+
+    const caption = document.createElement("p");
+    caption.textContent = path.replace(/^\d+-/, "");
+
+    card.append(media, caption);
+
+    if (isOwner()) {
+      const del = document.createElement("button");
+      del.textContent = "Delete";
+      del.addEventListener("click", async () => {
+        if (!confirm("Delete this gallery file?")) return;
+        const { error: deleteError } = await client.storage.from(BUCKET).remove([path]);
+        if (deleteError) {
+          statusBox.textContent = deleteError.message;
+        } else {
+          statusBox.textContent = "File deleted.";
+          loadGallery();
+        }
+      });
+      card.append(del);
+    }
+
+    galleryGrid.append(card);
+  }
+
+  statusBox.textContent = files.length + " gallery item(s).";
+}
+
+uploadBtn.addEventListener("click", async () => {
+  if (!isOwner()) {
+    statusBox.textContent = "Owner access is not active.";
+    return;
+  }
+
+  const files = Array.from(mediaFiles.files || []);
+  if (!files.length) {
+    statusBox.textContent = "Please select photos or videos first.";
+    return;
+  }
+
+  uploadBtn.disabled = true;
+  for (const file of files) {
+    const path = Date.now() + "-" + file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+    const { error } = await client.storage.from(BUCKET).upload(path, file, {
+      upsert: false,
+      contentType: file.type
+    });
+
+    if (error) {
+      statusBox.textContent = "Upload error: " + error.message;
+      uploadBtn.disabled = false;
+      return;
+    }
+  }
+
+  mediaFiles.value = "";
+  statusBox.textContent = "Upload complete.";
+  uploadBtn.disabled = false;
+  loadGallery();
+});
+
+client.auth.onAuthStateChange(() => {
+  refreshAccount();
+});
+
+(async function start() {
+  await refreshAccount();
+  await loadGallery();
+})();
+</script>
+</body>
+</html>
