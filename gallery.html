@@ -1,4 +1,4 @@
-HTML
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,20 +7,87 @@ HTML
 <title>Travel Gallery | Brahmaputra Trail</title>
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-.gallery-tools{max-width:1100px;margin:25px auto;padding:18px;background:#fff;border-radius:12px}
-.gallery-tools button,.gallery-tools label{display:inline-block;padding:11px 18px;margin:5px;border:0;border-radius:7px;background:#176b50;color:white;font-weight:600;cursor:pointer}
-.gallery-tools button.secondary{background:#34495e}
-.gallery-tools input{max-width:100%;margin:10px 0}
-.gallery-status{padding:10px;color:#315b4a}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-.gallery-item{background:white;border-radius:12px;overflow:hidden;box-shadow:0 3px 14px #0001}
-.gallery-item img,.gallery-item video{width:100%;height:220px;object-fit:cover;display:block}
-.gallery-item p{padding:10px;margin:0}
-.gallery-item button{margin:0 10px 12px}
-[hidden]{display:none!important}
+.gallery-tools {
+  max-width:1100px;
+  margin:25px auto;
+  padding:18px;
+  background:#fff;
+  border-radius:12px;
+}
+.gallery-tools button,.gallery-tools label {
+  display:inline-block;
+  padding:11px 18px;
+  margin:5px;
+  border:0;
+  border-radius:7px;
+  background:#176b50;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+.gallery-tools button.secondary {background:#34495e}
+.gallery-tools input {max-width:100%;margin:10px 0}
+.gallery-status {padding:10px;color:#315b4a}
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px;
+}
+.gallery-item {
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 3px 14px #0001;
+}
+.gallery-item img,.gallery-item video {
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
+}
+.gallery-item img {cursor:zoom-in}
+.gallery-item p {padding:10px;margin:0}
+.gallery-item button {margin:0 10px 12px}
+[hidden] {display:none!important}
+
+/* Full-screen photo viewer */
+.photo-lightbox {
+  display:none;
+  position:fixed;
+  z-index:99999;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  align-items:center;
+  justify-content:center;
+  padding:55px 12px 20px;
+}
+.photo-lightbox.open {display:flex}
+.photo-lightbox img {
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  border-radius:5px;
+}
+.lightbox-close {
+  position:absolute;
+  top:12px;
+  right:18px;
+  color:white;
+  background:#333;
+  border:0;
+  border-radius:50%;
+  width:44px;
+  height:44px;
+  font-size:28px;
+  cursor:pointer;
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -52,10 +119,12 @@ HTML
 
 <div id="adminPanel" hidden>
 <h3>Upload travel photos or videos</h3>
-<input id="mediaFiles" type="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm" multiple>
+<input id="mediaFiles" type="file"
+accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm"
+multiple>
 <br>
 <button id="uploadBtn">Upload selected files</button>
-<p class="gallery-status">Owner upload access will activate after account verification.</p>
+<p class="gallery-status">Owner upload access is active for your account.</p>
 </div>
 
 <p id="status" class="gallery-status" aria-live="polite">Loading gallery...</p>
@@ -66,15 +135,24 @@ HTML
 
 <footer>© Brahmaputra Trail</footer>
 
+<!-- Full-screen photo viewer -->
+<div id="photoLightbox" class="photo-lightbox"
+     role="dialog" aria-modal="true" aria-label="Photo viewer">
+<button id="lightboxClose" class="lightbox-close"
+        aria-label="Close photo viewer">&times;</button>
+<img id="lightboxImage" src="" alt="Full-size travel photograph">
+</div>
+
 <script>
 const SUPABASE_URL = "https://ogsouhyhxqjuuhdncxpg.supabase.co";
 const SUPABASE_KEY = "sb_publishable_MhqFVYEEWNtWB7njVqDFyg_-abJFJQN";
 const BUCKET = "Gallery";
-
-/* Owner UID will be added only after your Google login is verified. */
 const OWNER_UID = "29988649-2fb8-484b-ba62-3c29735fd410";
 
-const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const client = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
 const loginBtn = document.getElementById("loginBtn");
 const logoutBtn = document.getElementById("logoutBtn");
@@ -85,35 +163,81 @@ const galleryGrid = document.getElementById("galleryGrid");
 const mediaFiles = document.getElementById("mediaFiles");
 const uploadBtn = document.getElementById("uploadBtn");
 
+const photoLightbox = document.getElementById("photoLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.getElementById("lightboxClose");
+
 let currentUser = null;
 
 function isOwner() {
-  return !!currentUser && !!OWNER_UID && currentUser.id === OWNER_UID;
+  return !!currentUser && currentUser.id === OWNER_UID;
 }
 
+/* Open photo full screen */
+function openPhoto(url, altText) {
+  lightboxImage.src = url;
+  lightboxImage.alt = altText || "Travel photograph";
+  photoLightbox.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+/* Close photo viewer */
+function closePhoto() {
+  photoLightbox.classList.remove("open");
+  lightboxImage.src = "";
+  document.body.style.overflow = "";
+}
+
+lightboxClose.addEventListener("click", closePhoto);
+
+photoLightbox.addEventListener("click", function(event) {
+  if (event.target === photoLightbox) {
+    closePhoto();
+  }
+});
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closePhoto();
+  }
+});
+
+/* Google login */
 loginBtn.addEventListener("click", async () => {
   statusBox.textContent = "Opening Google login...";
+
   const { error } = await client.auth.signInWithOAuth({
     provider: "google",
     options: {
       redirectTo: window.location.origin + window.location.pathname
     }
   });
+
   if (error) statusBox.textContent = error.message;
 });
 
+/* Logout */
 logoutBtn.addEventListener("click", async () => {
   const { error } = await client.auth.signOut();
-  if (error) statusBox.textContent = error.message;
+
+  if (error) {
+    statusBox.textContent = error.message;
+  } else {
+    await refreshAccount();
+    await loadGallery();
+  }
 });
 
+/* Account check */
 async function refreshAccount() {
   const { data, error } = await client.auth.getUser();
+
   if (error) {
     accountInfo.textContent = "Not signed in.";
     currentUser = null;
   } else {
     currentUser = data.user;
+
     accountInfo.textContent = currentUser
       ? "Signed in: " + (currentUser.email || "Google account")
       : "Not signed in.";
@@ -122,18 +246,9 @@ async function refreshAccount() {
   loginBtn.hidden = !!currentUser;
   logoutBtn.hidden = !currentUser;
   adminPanel.hidden = !isOwner();
-
-  if (currentUser && !OWNER_UID) {
-    accountInfo.textContent += " — Owner access is not activated yet.";
-  }
 }
 
-function safeText(value) {
-  const p = document.createElement("p");
-  p.textContent = value;
-  return p.textContent;
-}
-
+/* Load gallery photos and videos */
 async function loadGallery() {
   statusBox.textContent = "Loading gallery...";
   galleryGrid.replaceChildren();
@@ -144,11 +259,13 @@ async function loadGallery() {
   });
 
   if (error) {
-    statusBox.textContent = "Gallery could not load. Storage read policy may need setup.";
+    statusBox.textContent = "Gallery could not load. Please check storage access.";
     return;
   }
 
-  const files = (data || []).filter(file => file.name && !file.name.startsWith("."));
+  const files = (data || []).filter(file =>
+    file.name && !file.name.startsWith(".")
+  );
 
   if (!files.length) {
     statusBox.textContent = "No travel photos or videos uploaded yet.";
@@ -157,7 +274,9 @@ async function loadGallery() {
 
   for (const file of files) {
     const path = file.name;
-    const { data: publicData } = client.storage.from(BUCKET).getPublicUrl(path);
+    const { data: publicData } =
+      client.storage.from(BUCKET).getPublicUrl(path);
+
     const url = publicData.publicUrl;
     const isVideo = /\.(mp4|webm)$/i.test(path);
 
@@ -166,12 +285,17 @@ async function loadGallery() {
 
     const media = document.createElement(isVideo ? "video" : "img");
     media.src = url;
+
     if (isVideo) {
       media.controls = true;
       media.preload = "metadata";
     } else {
       media.alt = "Brahmaputra Trail travel photograph";
       media.loading = "lazy";
+
+      media.addEventListener("click", function() {
+        openPhoto(url, media.alt);
+      });
     }
 
     const caption = document.createElement("p");
@@ -179,19 +303,25 @@ async function loadGallery() {
 
     card.append(media, caption);
 
+    /* Owner-only delete */
     if (isOwner()) {
       const del = document.createElement("button");
       del.textContent = "Delete";
+
       del.addEventListener("click", async () => {
         if (!confirm("Delete this gallery file?")) return;
-        const { error: deleteError } = await client.storage.from(BUCKET).remove([path]);
+
+        const { error: deleteError } =
+          await client.storage.from(BUCKET).remove([path]);
+
         if (deleteError) {
           statusBox.textContent = deleteError.message;
         } else {
           statusBox.textContent = "File deleted.";
-          loadGallery();
+          await loadGallery();
         }
       });
+
       card.append(del);
     }
 
@@ -201,6 +331,7 @@ async function loadGallery() {
   statusBox.textContent = files.length + " gallery item(s).";
 }
 
+/* Upload photos and videos */
 uploadBtn.addEventListener("click", async () => {
   if (!isOwner()) {
     statusBox.textContent = "Owner access is not active.";
@@ -208,18 +339,26 @@ uploadBtn.addEventListener("click", async () => {
   }
 
   const files = Array.from(mediaFiles.files || []);
+
   if (!files.length) {
     statusBox.textContent = "Please select photos or videos first.";
     return;
   }
 
   uploadBtn.disabled = true;
+
   for (const file of files) {
-    const path = Date.now() + "-" + file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-    const { error } = await client.storage.from(BUCKET).upload(path, file, {
-      upsert: false,
-      contentType: file.type
-    });
+    const path = Date.now() + "-" +
+      file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+
+    const { error } = await client.storage.from(BUCKET).upload(
+      path,
+      file,
+      {
+        upsert: false,
+        contentType: file.type
+      }
+    );
 
     if (error) {
       statusBox.textContent = "Upload error: " + error.message;
@@ -231,17 +370,24 @@ uploadBtn.addEventListener("click", async () => {
   mediaFiles.value = "";
   statusBox.textContent = "Upload complete.";
   uploadBtn.disabled = false;
-  loadGallery();
+
+  await loadGallery();
 });
 
+/* Refresh account when login state changes */
 client.auth.onAuthStateChange(() => {
-  refreshAccount();
+  setTimeout(async () => {
+    await refreshAccount();
+    await loadGallery();
+  }, 0);
 });
 
+/* Start page */
 (async function start() {
   await refreshAccount();
   await loadGallery();
 })();
 </script>
+
 </body>
 </html>
