@@ -1,596 +1,492 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Discover Assam, Meghalaya and Arunachal Pradesh with Brahmaputra Trail. Explore tour packages, Kamakhya Darshan, taxi services and airport transfers.">
-<meta name="theme-color" content="#123f35">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eaf7fc">
+
 <title>Brahmaputra Trail | Explore North East India</title>
 
+<meta name="description" content="Discover Assam, Meghalaya and Arunachal Pradesh with Brahmaputra Trail. Tour packages, car rental, hotel assistance and Kamakhya Darshan in Guwahati.">
+
 <style>
-:root{
---forest:#123f35;
---green:#1e654f;
---gold:#e9bd70;
---cream:#f7f6ef;
---ink:#21342d;
---muted:#66766e;
---white:#fff;
---shadow:0 14px 38px rgba(16,55,43,.11);
+:root {
+  --navy:#06475b;
+  --teal:#075a68;
+  --sky:#eaf7fc;
+  --pale:#f5fbfe;
+  --green:#07964f;
+  --text:#294653;
 }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-color:var(--ink);
-background:var(--cream);
-line-height:1.65;
-}
-a{color:inherit}
+* { box-sizing:border-box; }
 
-.topbar{
-background:var(--forest);
-color:#eaf2ec;
-text-align:center;
-padding:7px 14px;
-font-size:12px;
-letter-spacing:.7px;
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:85px;
 }
 
-header{
-position:sticky;
-top:0;
-z-index:20;
-background:rgba(255,255,255,.97);
-box-shadow:0 3px 18px #102d2110;
+body {
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--text);
+  background:#fff;
 }
 
-.nav{
-max-width:1180px;
-margin:auto;
-padding:13px 22px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:18px;
+a { text-decoration:none; }
+
+.topbar {
+  background:#eaf7fc;
+  color:#456b7b;
+  text-align:center;
+  padding:6px;
+  font:10px Arial,sans-serif;
+  letter-spacing:1.4px;
 }
 
-.brand{
-text-decoration:none;
-color:var(--forest);
-font-weight:900;
-letter-spacing:1.5px;
-font-size:20px;
-line-height:1.15;
+header {
+  background:white;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 2px 10px #16485b12;
 }
 
-.brand small{
-display:block;
-font-size:9px;
-letter-spacing:2.2px;
-color:#7b8a80;
-margin-top:5px;
+.nav {
+  max-width:1250px;
+  min-height:62px;
+  margin:auto;
+  padding:8px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
 
-nav{
-display:flex;
-align-items:center;
-gap:19px;
-flex-wrap:wrap;
+.brand {
+  color:var(--navy);
+  font:bold 18px Arial,sans-serif;
+  letter-spacing:.5px;
+  white-space:nowrap;
 }
 
-nav a{
-text-decoration:none;
-font-size:13px;
-font-weight:700;
-color:#34483e;
+.brand small {
+  display:block;
+  font:8px Arial,sans-serif;
+  letter-spacing:2px;
+  color:#66818c;
+  margin-top:4px;
 }
 
-nav a:hover{color:var(--green)}
-
-.nav-cta,.btn{
-display:inline-block;
-text-decoration:none;
-font-weight:800;
-border-radius:5px;
-padding:12px 18px;
-background:var(--gold);
-color:#20382e;
-transition:.2s;
+nav {
+  display:flex;
+  align-items:center;
+  gap:19px;
 }
 
-.nav-cta{
-padding:10px 16px;
-font-size:13px;
+nav a {
+  color:#254b5b;
+  font:11px Arial,sans-serif;
 }
 
-.btn:hover,.nav-cta:hover{
-transform:translateY(-2px);
-filter:brightness(.97);
+nav a:hover { color:#1685b5; }
+
+.nav-contact {
+  background:var(--green);
+  color:white;
+  padding:9px 15px;
+  border-radius:25px;
+  font:11px Arial,sans-serif;
+  white-space:nowrap;
 }
 
 /* HERO */
 
-.hero{
-min-height:680px;
-display:flex;
-align-items:center;
-color:#fff;
-background:
-linear-gradient(
-90deg,
-rgba(5,34,27,.78),
-rgba(5,34,27,.38) 58%,
-rgba(5,34,27,.08)
-),
-url('brahmaputra-hero.png') center/cover no-repeat;
 .hero {
-  background-color: #e8f3ee;
-}
-}
-.hero-inner{
-max-width:1180px;
-width:100%;
-margin:auto;
-padding:90px 22px;
+  min-height:275px;
+  display:flex;
+  align-items:center;
+  background:
+    linear-gradient(90deg,rgba(235,249,255,.12),rgba(235,249,255,.02)),
+    url("brahmaputra-hero.jpg") center/cover no-repeat;
 }
 
-.eyebrow{
-font-size:11px;
-letter-spacing:2.5px;
-font-weight:900;
-color:var(--green);
+.hero-inner {
+  width:100%;
+  max-width:1250px;
+  margin:auto;
+  padding:38px 6.3%;
 }
 
-.hero .eyebrow{color:#f4d99f}
-
-.hero h1{
-font-size:clamp(43px,7vw,78px);
-line-height:1.04;
-max-width:760px;
-margin:17px 0 20px;
-letter-spacing:-1.8px;
+.eyebrow {
+  font:10px Arial,sans-serif;
+  letter-spacing:3px;
+  color:#164e64;
 }
 
-.hero p{
-font-size:18px;
-max-width:650px;
-color:#f1f4ee;
-margin:0 0 27px;
+.hero h1 {
+  color:#06475b;
+  font-size:46px;
+  font-weight:normal;
+  margin:8px 0;
+  line-height:1.1;
 }
 
-.hero-actions{
-display:flex;
-flex-wrap:wrap;
-gap:12px;
-align-items:center;
+.hero p {
+  font:14px Arial,sans-serif;
+  color:#164e64;
+  margin:0 0 18px;
 }
 
-.hero-actions .btn,
-.hero-actions .btn-light{
-margin:0;
-min-height:46px;
-display:inline-flex;
-align-items:center;
-justify-content:center;
+.buttons {
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
 }
 
-.btn-light{
-display:inline-block;
-text-decoration:none;
-border:1px solid #fff;
-color:white;
-padding:11px 18px;
-border-radius:5px;
-font-weight:800;
+.btn {
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:22px;
+  background:var(--teal);
+  color:white;
+  font:bold 10px Arial,sans-serif;
+  border:1px solid var(--teal);
 }
 
-.hero-note{
-margin-top:28px;
-font-size:12px;
-letter-spacing:1px;
-color:#e6eee8;
+.btn.light {
+  background:white;
+  color:var(--teal);
 }
 
-/* GENERAL SECTIONS */
+/* SECTIONS */
 
-.section{
-max-width:1180px;
-margin:auto;
-padding:76px 22px;
+.section {
+  padding:24px 22px;
+  max-width:1250px;
+  margin:auto;
 }
 
-.section-head{
-text-align:center;
-max-width:760px;
-margin:0 auto 36px;
+.section-bg {
+  background:var(--pale);
+  max-width:none;
 }
 
-.section h2{
-font-size:clamp(29px,4vw,43px);
-line-height:1.15;
-color:var(--forest);
-margin:10px 0 14px;
-letter-spacing:-.7px;
+.section-blue {
+  background:#e3f4fb;
+  max-width:none;
 }
 
-.section-head p{color:var(--muted);margin:0}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(3,minmax(0,1fr));
-gap:22px;
+.inner {
+  max-width:1250px;
+  margin:auto;
 }
 
-.card{
-background:#fff;
-border-radius:10px;
-overflow:hidden;
-box-shadow:var(--shadow);
-transition:transform .2s;
-height:100%;
+.section-title {
+  text-align:center;
+  margin-bottom:17px;
 }
 
-.card:hover{transform:translateY(-4px)}
-
-.card img{
-display:block;
-width:100%;
-height:225px;
-object-fit:cover;
+.section-title h2 {
+  font-size:21px;
+  font-weight:normal;
+  color:var(--navy);
+  margin:0 0 3px;
+  letter-spacing:.7px;
 }
 
-.card-body{padding:22px;height:100%}
-
-.card h3{
-color:var(--forest);
-margin:0 0 8px;
-font-size:21px;
+.section-title p {
+  font:10px Arial,sans-serif;
+  color:#647d88;
+  margin:0;
 }
 
-.card p{
-margin:0 0 15px;
-color:var(--muted);
-font-size:14px;
+.grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:17px;
 }
 
-.text-link{
-color:var(--green);
-font-weight:800;
-text-decoration:none;
-font-size:13px;
+.card {
+  background:white;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 5px 18px rgba(20,76,99,.10);
+  border:1px solid #edf3f6;
 }
 
-/* KAMAKHYA */
-
-.intro-band{background:#e9efe7}
-
-.two-col{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:42px;
-align-items:center;
+.card img {
+  width:100%;
+  height:92px;
+  object-fit:cover;
+  display:block;
 }
 
-.two-col img{
-width:100%;
-height:390px;
-object-fit:cover;
-border-radius:10px;
-box-shadow:var(--shadow);
+.card-body {
+  padding:9px 11px 12px;
 }
 
-.two-col p{color:var(--muted)}
-
-<img class="temple-photo"
-src="IMG_20261104_201912.jpg"
-alt="Original photograph of Kamakhya Temple at Nilachal Hill, Guwahati">   TOUR PACKAGES */
-
-.packages{background:#fff}
-
-.package-card{
-border:1px solid #e7ece5;
-border-radius:9px;
-padding:24px;
-background:#fff;
+.card h3 {
+  font-size:15px;
+  color:var(--navy);
+  font-weight:normal;
+  margin:0 0 3px;
 }
 
-.package-card .number{
-font-size:12px;
-color:#9a773d;
-font-weight:900;
-letter-spacing:2px;
+.card p {
+  font:10px/1.5 Arial,sans-serif;
+  color:#536a75;
+  margin:0 0 8px;
 }
 
-.package-card h3{
-color:var(--forest);
-margin:8px 0;
+.small-link {
+  font:10px Arial,sans-serif;
+  color:var(--teal);
 }
 
-.package-card p{
-font-size:14px;
-color:var(--muted);
+/* VEHICLES */
+
+.vehicle-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
 }
 
-/* SERVICES */
-
-.services{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
+.vehicle {
+  display:grid;
+  grid-template-columns:43% 57%;
+  min-height:155px;
 }
 
-.service{
-background:#fff;
-padding:24px 18px;
-border-radius:9px;
-text-align:center;
-box-shadow:var(--shadow);
-text-decoration:none;
+.vehicle img {
+  width:100%;
+  height:100%;
+  min-height:155px;
+  object-fit:cover;
 }
 
-.service .icon{font-size:30px}
-
-.service h3{
-font-size:16px;
-color:var(--forest);
-margin:9px 0 4px;
+.vehicle .card-body {
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
-.service p{
-font-size:13px;
-color:var(--muted);
-margin:0;
+.vehicle h3 { font-size:17px; }
+
+.vehicle-actions {
+  display:flex;
+  gap:6px;
+  margin-top:5px;
 }
 
-/* PROMISE */
-
-.promise{
-background:var(--forest);
-color:white;
+.vehicle-actions a {
+  display:inline-block;
+  padding:7px 10px;
+  border-radius:6px;
+  color:white;
+  font:bold 9px Arial,sans-serif;
+  text-align:center;
 }
 
-.promise .section h2,.promise h2{color:white}
+.call { background:#07576b; }
+.whatsapp { background:#07964f; }
 
-.promise .section-head p{color:#d5e2d9}
+/* PACKAGES */
 
-.promise-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:22px;
+.package img { height:100px; }
+
+.package-meta {
+  font:10px Arial,sans-serif;
+  color:#657d87;
+  margin:4px 0 8px;
 }
 
-.promise-item{
-border:1px solid #ffffff35;
-border-radius:9px;
-padding:24px;
+.details {
+  display:inline-block;
+  background:var(--teal);
+  color:white;
+  padding:5px 12px;
+  border-radius:18px;
+  font:10px Arial,sans-serif;
 }
 
-.promise-item b{
-display:block;
-color:#f1d39a;
-margin-bottom:7px;
+/* WHY CHOOSE US AND GALLERY */
+
+.split {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
 }
 
-.promise-item p{
-font-size:14px;
-color:#d8e4dc;
-margin:0;
+.why-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  text-align:center;
 }
 
-/* GALLERY */
-
-.gallery{
-display:grid;
-grid-template-columns:1.2fr 1fr 1fr;
-gap:14px;
+.why-item {
+  padding:8px 3px;
 }
 
-.gallery img{
-width:100%;
-height:230px;
-object-fit:cover;
-border-radius:8px;
+.why-icon {
+  font:24px Arial,sans-serif;
+  color:var(--teal);
 }
 
-.gallery img:first-child{
-height:474px;
-grid-row:span 2;
+.why-item strong {
+  display:block;
+  font:10px Arial,sans-serif;
+  color:var(--navy);
 }
 
-.live-gallery{
-min-height:80px;
-text-align:center;
-color:var(--muted);
-padding:22px;
-background:#fff;
-border-radius:10px;
+.why-item p {
+  font:9px Arial,sans-serif;
+  color:#647d88;
 }
 
-.gallery-status{margin:0}
-
-/* CONTACT */
-
-.cta{
-background:linear-gradient(110deg,#123f35,#24654f);
-color:#fff;
-text-align:center;
-padding:68px 22px;
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
 }
 
-.cta h2{
-font-size:clamp(29px,4vw,42px);
-margin:8px 0 12px;
+.gallery-grid img {
+  width:100%;
+  height:60px;
+  object-fit:cover;
+  border-radius:5px;
 }
 
-.cta p{
-max-width:680px;
-margin:0 auto 20px;
-color:#e2eee6;
+/* CUSTOMER REVIEW */
+
+.review-section {
+  padding:23px 15px;
+  background:
+    linear-gradient(#06475b55,#06475b55),
+    url("brahmaputra-hero.jpg") center/cover no-repeat;
 }
 
-.cta .eyebrow{color:#f0d49c}
+.review-section .section-title h2,
+.review-section .section-title p {
+  color:white;
+}
 
-.cta a:not(.btn){color:#f1d39a}
+.review-box {
+  max-width:500px;
+  margin:auto;
+  padding:17px;
+  background:white;
+  border-radius:8px;
+  text-align:center;
+}
+
+.review-box p {
+  font:11px Arial,sans-serif;
+  color:#647d88;
+}
+
+.review-box input,
+.review-box select,
+.review-box textarea {
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+  border:1px solid #d7e5eb;
+  border-radius:5px;
+  font:12px Arial,sans-serif;
+}
+
+.review-box textarea {
+  min-height:85px;
+  resize:vertical;
+}
+
+.review-box button {
+  border:0;
+  cursor:pointer;
+}
 
 /* FOOTER */
 
-footer{
-background:#0b2b24;
-color:#dce8df;
-padding:30px 18px;
-text-align:center;
-font-size:13px;
-line-height:2;
-overflow-wrap:anywhere;
+footer {
+  background:#043f48;
+  color:#e7f3f5;
+  padding:22px;
+  font:10px Arial,sans-serif;
 }
 
-footer strong{letter-spacing:1.5px}
-footer a{color:#f1d39a}
-
-/* RESPONSIVE TABLET */
-
-@media(max-width:850px){
-.nav{
-flex-wrap:wrap;
-justify-content:center;
+.footer-grid {
+  max-width:1250px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1.3fr;
+  gap:20px;
 }
 
-nav{
-justify-content:center;
-gap:12px;
+footer h3 {
+  font: bold 15px Arial,sans-serif;
+  letter-spacing:1px;
 }
 
-.grid{
-grid-template-columns:repeat(2,minmax(0,1fr));
+footer h4 {
+  margin:0 0 8px;
+  color:white;
 }
 
-.services{
-grid-template-columns:repeat(2,minmax(0,1fr));
+footer a {
+  display:block;
+  color:#e4f0f2;
+  margin:5px 0;
 }
 
-.two-col{
-grid-template-columns:1fr;
-gap:26px;
+.copyright {
+  text-align:center;
+  border-top:1px solid #ffffff30;
+  margin-top:16px;
+  padding-top:10px;
 }
 
-.two-col img{height:300px}
-.hero{min-height:610px}
+/* MOBILE */
+
+@media(max-width:850px) {
+  .nav { flex-wrap:wrap; }
+  nav {
+    order:3;
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .grid { grid-template-columns:repeat(2,1fr); }
+  .vehicle-grid { grid-template-columns:1fr; }
+  .split { grid-template-columns:1fr; }
 }
 
-/* RESPONSIVE MOBILE */
-
-@media(max-width:560px){
-
-.topbar{font-size:10px}
-
-.nav{
-padding:12px 14px;
-gap:12px;
-}
-
-.brand{
-text-align:center;
-width:100%;
-}
-
-nav{
-width:100%;
-justify-content:center;
-gap:10px 13px;
-}
-
-nav a{font-size:12px}
-
-.nav-cta{
-width:100%;
-text-align:center;
-}
-
-.hero{
-min-height:590px;
-background-position:center;
-}
-
-.hero-inner{padding:58px 19px}
-
-.hero h1{
-font-size:clamp(39px,11vw,54px);
-letter-spacing:-1px;
-}
-
-.hero p{
-font-size:16px;
-line-height:1.6;
-}
-
-.hero-actions{
-align-items:stretch;
-flex-direction:column;
-}
-
-.hero-actions .btn,
-.hero-actions .btn-light{
-width:100%;
-text-align:center;
-}
-
-.hero-note{line-height:1.7}
-
-.section{padding:52px 17px}
-
-.grid{
-grid-template-columns:1fr;
-gap:18px;
-}
-
-.card img{height:215px}
-
-.services{
-grid-template-columns:1fr 1fr;
-gap:12px;
-}
-
-.service{padding:19px 12px}
-
-.promise-grid{
-grid-template-columns:1fr;
-gap:14px;
-}
-
-.gallery{
-grid-template-columns:1fr 1fr;
-}
-
-.gallery img,
-.gallery img:first-child{
-height:175px;
-grid-row:auto;
-}
-
-.gallery img:first-child{grid-column:span 2}
-
-.two-col img{height:250px}
-
-.cta{padding:55px 18px}
-
-.cta .btn{
-max-width:100%;
-white-space:normal;
-}
-
-footer{font-size:12px}
-}
-
-html{scroll-padding-top:105px}
-
-a:focus-visible,
-button:focus-visible{
-outline:3px solid #d49d42;
-outline-offset:3px;
+@media(max-width:560px) {
+  .nav { padding:8px 12px; }
+  .brand { font-size:15px; }
+  nav { gap:9px 12px; }
+  nav a { font-size:10px; }
+  .nav-contact { font-size:9px; padding:8px 10px; }
+  .hero { min-height:255px; }
+  .hero-inner { padding:30px 20px; }
+  .hero h1 { font-size:36px; }
+  .hero p { font-size:12px; }
+  .section { padding:20px 13px; }
+  .grid { gap:10px; }
+  .card img { height:85px; }
+  .card-body { padding:8px; }
+  .card h3 { font-size:13px; }
+  .card p { font-size:9px; }
+  .vehicle { grid-template-columns:42% 58%; min-height:130px; }
+  .vehicle img { min-height:130px; }
+  .vehicle h3 { font-size:14px; }
+  .vehicle-actions a { padding:7px 8px; font-size:8px; }
+  .why-grid { grid-template-columns:repeat(4,1fr); }
+  .footer-grid { grid-template-columns:1fr 1fr; gap:14px; }
 }
 </style>
 </head>
@@ -598,29 +494,29 @@ outline-offset:3px;
 <body>
 
 <div class="topbar">
-ASSAM · MEGHALAYA · ARUNACHAL PRADESH
-&nbsp; | &nbsp; LOCAL TRAVEL ASSISTANCE
+ASSAM · MEGHALAYA · ARUNACHAL PRADESH | LOCAL TRAVEL ASSISTANCE
 </div>
 
 <header>
 <div class="nav">
 
-<a class="brand" href="index.html">
-BRAHMAPUTRA TRAIL
-<small>TOURS · TAXI · PILGRIMAGE</small>
+<a class="brand" href="#home">
+  🏞️ BRAHMAPUTRA TRAIL
+  <small>TOURS · TAXI · PILGRIMAGE</small>
 </a>
 
-<nav aria-label="Main navigation">
-<a href="#home">Home</a>
-<a href="#destinations">Destinations</a>
-<a href="#tours">Tour Packages</a>
-<a href="#services">Taxi Services</a>
-<a href="#kamakhya">Kamakhya</a>
-<a href="#contact">Contact</a>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#tours">Tour Packages</a>
+  <a href="#vehicles">Car Rental</a>
+  <a href="#services">Services</a>
+  <a href="#about">About Us</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<a class="nav-cta" href="https://wa.me/917086928409?text=Hello%20Brahmaputra%20Trail%2C%20I%20want%20to%20plan%20a%20trip.">
-BOOK NOW
+<a class="nav-contact" href="https://wa.me/917086928409">
+  ☎ +91 70869 28409
 </a>
 
 </div>
@@ -628,303 +524,302 @@ BOOK NOW
 
 <main>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 
 <section class="hero" id="home">
 <div class="hero-inner">
 
-<div class="eyebrow">WELCOME TO BRAHMAPUTRA TRAIL</div>
+<div class="eyebrow">EXPLORE · EXPERIENCE · DISCOVER</div>
 
-<h1>Your journey, our responsibility.</h1>
+<h1>Brahmaputra Trail</h1>
 
-<p>
-Discover the beauty of North East India. From the divine Kamakhya Temple to the breathtaking landscapes of Assam and the North East, we help make your journey memorable.
-</p>
+<p>Discover the beauty of North East India</p>
 
-<div class="hero-actions">
-<a class="btn" href="#tours">EXPLORE TOUR PACKAGES</a>
-<a class="btn-light" href="#services">TAXI & AIRPORT PICKUP</a>
+<div class="buttons">
+  <a class="btn" href="#tours">EXPLORE PACKAGES →</a>
+  <a class="btn light" href="#vehicles">TAXI & AIRPORT PICKUP →</a>
 </div>
-
-<div class="hero-note">
-THOUGHTFUL TRAVEL · LOCAL ASSISTANCE · MEMORABLE EXPERIENCES
-</div>
-
-</div>
-</section>
-
-<!-- DESTINATIONS -->
-
-<section class="section" id="destinations">
-
-<div class="section-head">
-<div class="eyebrow">EXPLORE OUR REGION</div>
-<h2>Three destinations. Countless memories.</h2>
-<p>Discover the diverse beauty, culture and landscapes of North East India.</p>
-</div>
-
-<div class="grid">
-
-<article class="card">
-<img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=85" alt="Lush green tea garden and forest landscape">
-<div class="card-body">
-<h3>Assam</h3>
-<p>Explore tea gardens, the mighty Brahmaputra, wildlife, local culture and Guwahati's spiritual heritage.</p>
-<a class="text-link" href="#tours">DISCOVER ASSAM →</a>
-</div>
-</article>
-
-<article class="card">
-<img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=85" alt="Green forest landscape in Meghalaya">
-<div class="card-body">
-<h3>Meghalaya</h3>
-<p>Experience misty hills, waterfalls, living-root-bridge country and beautiful green landscapes.</p>
-<a class="text-link" href="#tours">DISCOVER MEGHALAYA →</a>
-</div>
-</article>
-
-<article class="card">
-<img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85" alt="Mountain peaks in Arunachal Pradesh">
-<div class="card-body">
-<h3>Arunachal Pradesh</h3>
-<p>Travel through mountain valleys, peaceful towns and spectacular Himalayan scenery.</p>
-<a class="text-link" href="#tours">DISCOVER ARUNACHAL →</a>
-</div>
-</article>
-
-</div>
-</section>
-
-<!-- ASSAM DESTINATIONS -->
-
-<section class="section" id="assam-destinations">
-
-<div class="section-head">
-<div class="eyebrow">DISCOVER MORE OF ASSAM</div>
-<h2>Explore the hidden gems of Assam.</h2>
-<p>Discover river islands, wildlife, beautiful hills and unique local experiences.</p>
-</div>
-
-<div class="grid">
-
-<article class="card">
-<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Majuli_island.jpg" alt="Majuli Island Assam" loading="lazy">
-<div class="card-body">
-<h3>Majuli Island</h3>
-<p>Experience the world's famous river island, satras, culture and peaceful Brahmaputra landscapes.</p>
-<a class="text-link" href="https://wa.me/917086928409?text=I%20want%20to%20explore%20Majuli%20Island" target="_blank" rel="noopener">ENQUIRE NOW →</a>
-<small>Photo: Kartikeya Agarwal / Wikimedia Commons, CC BY-SA 4.0</small>
-</div>
-</article>
-
-<article class="card">
-<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rhino_from_Assam.jpg" alt="One horned rhinoceros at Kaziranga" loading="lazy">
-<div class="card-body">
-<h3>Kaziranga National Park</h3>
-<p>Explore Assam's famous wildlife landscape and the home of the one-horned rhinoceros.</p>
-<a class="text-link" href="https://wa.me/917086928409?text=I%20want%20a%20Kaziranga%20tour" target="_blank" rel="noopener">ENQUIRE NOW →</a>
-<small>Photo: Yajuvendraupadhyaya / Wikimedia Commons, CC BY 4.0</small>
-</div>
-</article>
-
-<article class="card">
-<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Haflong_Lake.jpg" alt="Haflong Lake in Dima Hasao" loading="lazy">
-<div class="card-body">
-<h3>Dima Hasao – Haflong</h3>
-<p>Enjoy scenic hills, beautiful lakes and the peaceful charm of Assam's hill station.</p>
-<a class="text-link" href="https://wa.me/917086928409?text=I%20want%20a%20Haflong%20tour" target="_blank" rel="noopener">ENQUIRE NOW →</a>
-<small>Photo: Thoiba Paonam / Wikimedia Commons, CC BY-SA 4.0</small>
-</div>
-</article>
-
-<article class="card">
-<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Overhead_view_of_Jatinga_village%2C_Assam.jpg" alt="Jatinga village in Assam" loading="lazy">
-<div class="card-body">
-<h3>Jatinga Valley</h3>
-<p>Discover the scenic village near Haflong, surrounded by green hills and nature.</p>
-<a class="text-link" href="https://wa.me/917086928409?text=I%20want%20to%20visit%20Jatinga" target="_blank" rel="noopener">ENQUIRE NOW →</a>
-<small>Photo: Evan Centanni / Wikimedia Commons, CC BY 4.0</small>
-</div>
-</article>
-
-</div>
-</section>
-
-<!-- KAMAKHYA -->
-
-<section class="intro-band" id="kamakhya">
-<div class="section two-col">
-
-<div>
-<div class="eyebrow">A SACRED JOURNEY IN GUWAHATI</div>
-<h2>Seek blessings at Maa Kamakhya Temple.</h2>
-<p>
-Make your visit to the revered Kamakhya Temple at Nilachal Hill part of a thoughtful Guwahati journey. Contact us for travel assistance and help planning your visit.
-</p>
-<a class="btn" href="kamakhya.html">KAMAKHYA DARSHAN DETAILS</a>
-</div>
-
-<img class="temple-photo" src="IMG_20261104_201912.jpg" alt="Original photograph of Kamakhya Temple at Nilachal Hill, Guwahati">
-
-</div>
-</section>
-
-<!-- TOUR PACKAGES -->
-
-<section class="section packages" id="tours">
-
-<div class="section-head">
-<div class="eyebrow">TRAVEL YOUR WAY</div>
-<h2>Explore our tour experiences.</h2>
-<p>Tell us your dates, group size and places of interest. We can discuss a suitable itinerary for your journey.</p>
-</div>
-
-<div class="grid">
-
-<article class="package-card">
-<div class="number">01 / ASSAM</div>
-<h3>Assam Discovery</h3>
-<p>Explore Guwahati, tea gardens, river views and the cultural highlights of Assam.</p>
-<a class="text-link" href="https://wa.me/917086928409?text=Hello%20Brahmaputra%20Trail%2C%20please%20share%20Assam%20tour%20details.">ASK ABOUT THIS TOUR →</a>
-</article>
-
-<article class="package-card">
-<div class="number">02 / NORTH EAST</div>
-<h3>North East Holiday</h3>
-<p>Plan a scenic holiday across selected destinations in Assam and neighbouring states.</p>
-<a class="text-link" href="https://wa.me/917086928409?text=Hello%20Brahmaputra%20Trail%2C%20please%20help%20plan%20a%20North%20East%20holiday.">PLAN YOUR HOLIDAY →</a>
-</article>
-
-<article class="package-card">
-<div class="number">03 / PILGRIMAGE</div>
-<h3>Kamakhya Darshan</h3>
-<p>Arrange your Guwahati travel around a visit to the sacred Maa Kamakhya Temple.</p>
-<a class="text-link" href="kamakhya.html">VISIT KAMAKHYA PAGE →</a>
-</article>
 
 </div>
 </section>
 
 <!-- SERVICES -->
 
-<section class="section" id="services">
+<section class="section section-bg" id="services">
+<div class="inner">
 
-<div class="section-head">
-<div class="eyebrow">TRAVEL WITH COMFORT</div>
-<h2>Travel services made simple.</h2>
-<p>Get in touch to discuss your transport needs before or during your North East journey.</p>
+<div class="section-title">
+<h2>OUR SERVICES</h2>
+<p>Travel made easy with our reliable and professional services</p>
 </div>
 
-<div class="services">
+<div class="grid">
 
-<a class="service" href="https://wa.me/917086928409?text=Hello%20Brahmaputra%20Trail%2C%20I%20need%20taxi%20service.%20Please%20share%20details." target="_blank" rel="noopener">
-<div class="icon">🚕</div>
-<h3>Taxi Services</h3>
-<p>Local rides and outstation road trips.</p>
-</a>
-
-<a class="service" href="https://wa.me/917086928409?text=Hello%20Brahmaputra%20Trail%2C%20I%20need%20airport%20pickup%20or%20drop-off.%20Please%20share%20details." target="_blank" rel="noopener">
-<div class="icon">✈️</div>
-<h3>Airport Pickup</h3>
-<p>Pickup and drop-off travel assistance.</p>
-</a>
-
-<a class="service" href="https://wa.me/917086928409?text=Hello%20Brahmaputra%20Trail%2C%20I%20need%20travel%20assistance%20for%20Kamakhya%20Darshan.%20Please%20share%20details." target="_blank" rel="noopener">
-<div class="icon">🙏</div>
-<h3>Pilgrimage Travel</h3>
-<p>Travel support for Kamakhya Darshan.</p>
-</a>
-
-<a class="service" href="https://wa.me/917086928409?text=Hello%20Brahmaputra%20Trail%2C%20I%20want%20to%20plan%20a%20family%20tour.%20Please%20share%20details." target="_blank" rel="noopener">
-<div class="icon">🌿</div>
-<h3>Family Tours</h3>
-<p>Trip planning for families and groups.</p>
-</a>
-
+<article class="card">
+<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=85" alt="Car rental">
+<div class="card-body">
+<h3>Car Rental</h3>
+<p>Comfortable and safe vehicles for your journey.</p>
+<a class="small-link" href="#vehicles">Know More →</a>
 </div>
-</section>
+</article>
 
-<!-- OUR PROMISE -->
-
-<section class="promise">
-<div class="section">
-
-<div class="section-head">
-<div class="eyebrow" style="color:#f0d49c">THE BRAHMAPUTRA TRAIL PROMISE</div>
-<h2>Good journeys begin with good planning.</h2>
-<p>We want your North East travel experience to feel welcoming, clear and comfortable.</p>
+<article class="card">
+<img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=85" alt="Tour packages">
+<div class="card-body">
+<h3>Tour Packages</h3>
+<p>Explore Assam, Meghalaya, Arunachal & beyond.</p>
+<a class="small-link" href="#tours">Know More →</a>
 </div>
+</article>
 
-<div class="promise-grid">
-
-<div class="promise-item">
-<b>Friendly service</b>
-<p>Speak with us about your plans and travel requirements.</p>
+<article class="card">
+<img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=700&q=85" alt="Hotel room">
+<div class="card-body">
+<h3>Hotel Assistance</h3>
+<p>Hotel and stay assistance for your journey.</p>
+<a class="small-link" href="https://wa.me/917086928409?text=I%20need%20hotel%20assistance">Know More →</a>
 </div>
+</article>
 
-<div class="promise-item">
-<b>Flexible trip plans</b>
-<p>Discuss destinations, dates and routes that suit your journey.</p>
+<article class="card">
+<img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=700&q=85" alt="Kamakhya Temple">
+<div class="card-body">
+<h3>Kamakhya Darshan</h3>
+<p>Sacred journey to Maa Kamakhya Temple.</p>
+<a class="small-link" href="kamakhya.html">Know More →</a>
 </div>
-
-<div class="promise-item">
-<b>Local travel assistance</b>
-<p>Get help planning travel across Assam and the North East.</p>
-</div>
+</article>
 
 </div>
 </div>
 </section>
 
-<!-- GALLERY -->
+<!-- VEHICLES -->
 
-<section class="section" id="gallery">
+<section class="section section-blue" id="vehicles">
+<div class="inner">
 
-<div class="section-head">
-<div class="eyebrow">BRAHMAPUTRA TRAIL GALLERY</div>
-<h2>Our travel moments.</h2>
-<p>Explore photos and videos shared by Brahmaputra Trail.</p>
+<div class="section-title">
+<h2>OUR VEHICLES</h2>
+<p>Safe, comfortable and well-maintained vehicles for your travel needs</p>
 </div>
 
-<div id="liveGallery" class="live-gallery">
-<p class="gallery-status">Loading photos and videos...</p>
-</div>
+<div class="vehicle-grid">
 
-<div style="text-align:center;margin-top:28px">
-<a class="btn" href="gallery.html">OPEN GALLERY & UPLOAD</a>
+<article class="card vehicle">
+<img src="assets/force-urbania-original.jpg" alt="Force Urbania">
+<div class="card-body">
+<h3>Force Urbania</h3>
+<p>Premium group travel</p>
+<div class="vehicle-actions">
+<a class="call" href="tel:+917086928409">☎ Call Now</a>
+<a class="whatsapp" href="https://wa.me/917086928409?text=I%20am%20interested%20in%20Force%20Urbania">WhatsApp</a>
 </div>
+</div>
+</article>
 
+<article class="card vehicle">
+<img src="assets/innova-crysta-original.jpg" alt="Toyota Innova Crysta">
+<div class="card-body">
+<h3>Toyota Innova Crysta</h3>
+<p>Family & private travel</p>
+<div class="vehicle-actions">
+<a class="call" href="tel:+917086928409">☎ Call Now</a>
+<a class="whatsapp" href="https://wa.me/917086928409?text=I%20am%20interested%20in%20Innova%20Crysta">WhatsApp</a>
+</div>
+</div>
+</article>
+
+<article class="card vehicle">
+<img src="assets/tempo-traveller-17-seater.jpg" alt="Original Force Tempo Traveller 17 seater">
+<div class="card-body">
+<h3>Force Tempo Traveller</h3>
+<p>17 Seater · Group journeys</p>
+<div class="vehicle-actions">
+<a class="call" href="tel:+917086928409">☎ Call Now</a>
+<a class="whatsapp" href="https://wa.me/917086928409?text=I%20am%20interested%20in%2017%20seater%20Tempo%20Traveller">WhatsApp</a>
+</div>
+</div>
+</article>
+
+<article class="card vehicle">
+<img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=85" alt="Illustrative Swift Dzire sedan">
+<div class="card-body">
+<h3>Swift Dzire</h3>
+<p>City and outstation travel</p>
+<div class="vehicle-actions">
+<a class="call" href="tel:+917086928409">☎ Call Now</a>
+<a class="whatsapp" href="https://wa.me/917086928409?text=I%20am%20interested%20in%20Swift%20Dzire">WhatsApp</a>
+</div>
+</div>
+</article>
+
+</div>
+</div>
 </section>
 
-<div id="galleryViewer" class="gallery-viewer" aria-hidden="true">
-<button type="button" class="gallery-close" id="galleryClose" aria-label="Close viewer">×</button>
-<div id="galleryViewerContent"></div>
+<!-- TOUR PACKAGES -->
+
+<section class="section section-bg" id="tours">
+<div class="inner">
+
+<div class="section-title">
+<h2>POPULAR TOUR PACKAGES</h2>
+<p>Handpicked journeys for unforgettable experiences</p>
 </div>
+
+<div class="grid">
+
+<article class="card package">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rhino_from_Assam.jpg" alt="One horned rhinoceros in Assam">
+<div class="card-body">
+<h3>Assam Discovery</h3>
+<div class="package-meta">3N/4D | Guwahati, Kaziranga</div>
+<a class="details" href="https://wa.me/917086928409?text=Please%20share%20Assam%20Discovery%20tour%20details">View Details →</a>
+</div>
+</article>
+
+<article class="card package">
+<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=700&q=85" alt="Meghalaya landscape">
+<div class="card-body">
+<h3>Meghalaya Magic</h3>
+<div class="package-meta">4N/5D | Shillong, Cherrapunjee</div>
+<a class="details" href="https://wa.me/917086928409?text=Please%20share%20Meghalaya%20Magic%20tour%20details">View Details →</a>
+</div>
+</article>
+
+<article class="card package">
+<img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=85" alt="Himalayan mountains">
+<div class="card-body">
+<h3>Arunachal Adventure</h3>
+<div class="package-meta">6N/7D | Tawang, Dirang</div>
+<a class="details" href="https://wa.me/917086928409?text=Please%20share%20Arunachal%20Adventure%20tour%20details">View Details →</a>
+</div>
+</article>
+
+<article class="card package">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=85" alt="North East river valley">
+<div class="card-body">
+<h3>North East Special</h3>
+<div class="package-meta">8N/9D | Assam + Meghalaya + Arunachal</div>
+<a class="details" href="https://wa.me/917086928409?text=Please%20share%20North%20East%20Special%20tour%20details">View Details →</a>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<!-- WHY CHOOSE US AND GALLERY -->
+
+<section class="section" id="about">
+<div class="inner split">
+
+<div>
+<div class="section-title" style="text-align:left">
+<h2>WHY CHOOSE US</h2>
+<p>Your Trusted Travel Partner in North East India</p>
+</div>
+
+<div class="why-grid">
+<div class="why-item">
+<div class="why-icon">⌖</div>
+<strong>Local Expertise</strong>
+<p>In-depth knowledge of the region.</p>
+</div>
+
+<div class="why-item">
+<div class="why-icon">♢</div>
+<strong>Safe & Reliable</strong>
+<p>Your safety is our priority.</p>
+</div>
+
+<div class="why-item">
+<div class="why-icon">☏</div>
+<strong>24/7 Support</strong>
+<p>Always here to assist you.</p>
+</div>
+
+<div class="why-item">
+<div class="why-icon">♡</div>
+<strong>Memorable Experiences</strong>
+<p>More than just a trip.</p>
+</div>
+</div>
+</div>
+
+<div id="gallery">
+<div class="section-title" style="text-align:left">
+<h2>OUR GALLERY</h2>
+<p>Real moments. Real destinations.</p>
+</div>
+
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=400&q=80" alt="River valley">
+<img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=400&q=80" alt="Forest">
+<img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&q=80" alt="Mountains">
+<img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=400&q=80" alt="Temple">
+</div>
+
+<p style="margin-top:10px">
+<a class="details" href="gallery.html">View Gallery →</a>
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- CUSTOMER REVIEW -->
+
+<section class="review-section">
+<div class="inner">
+
+<div class="section-title">
+<h2>WHAT OUR CLIENTS SAY</h2>
+<p>Real feedback from our travellers</p>
+</div>
+
+<div class="review-box">
+<p>Have you travelled with Brahmaputra Trail? Share your experience with us. Your feedback helps other travellers.</p>
+
+<form id="reviewForm">
+
+<input id="reviewName" type="text" placeholder="Your name (optional)">
+
+<select id="reviewRating">
+<option value="5">★★★★★ - Excellent</option>
+<option value="4">★★★★ - Very Good</option>
+<option value="3">★★★ - Good</option>
+<option value="2">★★ - Fair</option>
+<option value="1">★ - Needs Improvement</option>
+</select>
+
+<textarea id="reviewText" required placeholder="Write your travel experience..."></textarea>
+
+<button class="btn" type="submit">WRITE A REVIEW →</button>
+
+</form>
+
+<p>Your review will be sent to Brahmaputra Trail through WhatsApp.</p>
+</div>
+
+</div>
+</section>
 
 <!-- CONTACT -->
 
-<section class="cta" id="contact">
+<section class="section" id="contact">
+<div class="section-title">
+<h2>PLAN YOUR NORTH EAST JOURNEY</h2>
+<p>Contact Brahmaputra Trail for tours, car rental and travel assistance.</p>
+</div>
 
-<div class="eyebrow">LET'S PLAN YOUR JOURNEY</div>
-
-<h2>Your North East adventure starts with a message.</h2>
-
-<p>
-Share your destination, travel dates and number of travellers. Contact Brahmaputra Trail to discuss tour packages, taxi services or Kamakhya Darshan travel assistance.
-</p>
-
-<a class="btn" href="https://wa.me/917086928409?text=Hello%20Brahmaputra%20Trail%2C%20I%20want%20to%20plan%20a%20trip.">
-CHAT WITH US ON WHATSAPP
+<div style="text-align:center">
+<a class="btn" style="background:#07964f" href="https://wa.me/917086928409?text=Hello%20Brahmaputra%20Trail%2C%20I%20want%20to%20plan%20a%20trip">
+CONTACT ON WHATSAPP
 </a>
-
-<p style="margin-top:18px;font-size:13px">
-Phone / WhatsApp:
-<a href="tel:+917086928409">+91 70869 28409</a><br>
-Email:
-<a href="mailto:hazarikasuresh29@gmail.com">hazarikasuresh29@gmail.com</a><br>
-Guwahati, Assam, India
-</p>
-
+</div>
 </section>
 
 </main>
@@ -932,15 +827,69 @@ Guwahati, Assam, India
 <!-- FOOTER -->
 
 <footer>
-<strong>BRAHMAPUTRA TRAIL</strong><br>
+<div class="footer-grid">
+
+<div>
+<h3>BRAHMAPUTRA TRAIL</h3>
 TOURS · TAXI · PILGRIMAGE<br>
+Explore · Travel · Create Memories
+</div>
+
+<div>
+<h4>QUICK LINKS</h4>
+<a href="#home">Home</a>
+<a href="#tours">Tour Packages</a>
+<a href="#vehicles">Car Rental</a>
+<a href="kamakhya.html">Kamakhya Darshan</a>
+</div>
+
+<div>
+<h4>SERVICES</h4>
+<a href="#about">About Us</a>
+<a href="gallery.html">Gallery</a>
+<a href="#contact">Contact</a>
+</div>
+
+<div>
+<h4>CONTACT US</h4>
+<a href="tel:+917086928409">☎ +91 70869 28409</a>
+<a href="mailto:hazarikasuresh29@gmail.com">hazarikasuresh29@gmail.com</a>
+Guwahati, Assam, India
+</div>
+
+</div>
+
+<div class="copyright">
 Proprietor: Suraj Hazarika<br>
-Phone / WhatsApp:
-<a href="tel:+917086928409">+91 70869 28409</a><br>
-Email:
-<a href="mailto:hazarikasuresh29@gmail.com">hazarikasuresh29@gmail.com</a><br>
-Guwahati, Assam, India · © 2026 Brahmaputra Trail
+© 2026 Brahmaputra Trail. All Rights Reserved.
+</div>
 </footer>
+
+<script>
+document.getElementById("reviewForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("reviewName").value.trim() || "Customer";
+  const rating = document.getElementById("reviewRating").value;
+  const review = document.getElementById("reviewText").value.trim();
+
+  if (!review) {
+    alert("Please write your review first.");
+    return;
+  }
+
+  const message =
+    "Customer Review for Brahmaputra Trail\n" +
+    "Name: " + name + "\n" +
+    "Rating: " + rating + "/5\n" +
+    "Review: " + review;
+
+  window.open(
+    "https://wa.me/917086928409?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+});
+</script>
 
 </body>
 </html>
